@@ -1,72 +1,60 @@
 'use client';
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 export default function LogoForm() {
   return (
-    <form className="space-y-6 max-w-xl mx-auto p-6 bg-[#181818] rounded-xl shadow-lg">
+    <form className="space-y-6 max-w-xl mx-auto p-6 bg-[#181818] rounded-xl shadow-lg text-white">
 
       <h1 className="text-3xl font-bold">AI Logo Generator</h1>
 
-      <div>
-        <label className="block font-medium font-semibold mb-2" htmlFor="brandName">
-           Brand Name
-        </label>
-        <input
-          type="text"
-          id="brandName"
-          name="brandName"
-          required
-          placeholder="Enter your brand name"
-          className="w-full h-10 p-2 bg-[#333333] rounded focus:ring-2 focus:ring-white focus:outline-none"
-        />
+      <div className="grid w-full items-center gap-2">
+        <Label htmlFor="brandName">Brand Name</Label>
+        <Input id="brandName" name="brandName" placeholder="Enter your brand name" required />
       </div>
 
-      <div>
-        <label className="block font-medium font-semibold mb-2" htmlFor="logoType">
-            Logo Type
-        </label>
-        <select
-            id="logoType"
-            name="logoType"
-            required
-            defaultValue = ""
-            className="w-full h-10 p-2 bg-[#333333] rounded focus:ring-2 focus:ring-white focus:outline-none"
-        >
-            <option value="" disabled hidden>Select a logo type</option>
-            <option value="icon">Icon</option>
-            <option value="text">Text</option>
-            <option value="icon-and-text">Icon & Text</option>
-        </select>
+
+      <div className="grid w-full items-center gap-2">
+        <Label htmlFor="logoType">Logo Type</Label>
+        <Select name="logoType" required>
+          <SelectTrigger>
+            <SelectValue placeholder="Select a logo type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="icon">Icon</SelectItem>
+            <SelectItem value="text">Text</SelectItem>
+            <SelectItem value="icon-and-text">Icon & Text</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
-      <div>
-        <label className="block font-medium font-semibold mb-2" htmlFor="industry">
-            Industry
-        </label>
-        <select
-            id="industry"
-            name="industry"
-            required
-            defaultValue = ""
-            className="w-full h-10 p-2 bg-[#333333] rounded focus:ring-2 focus:ring-white focus:outline-none"
-        >
-            <option value="" disabled hidden>Select an industry</option>
-            <option value="technology">Technology</option>
-            <option value="fashion">Fashion</option>
-            <option value="health-wellness">Health & Wellness</option>
-            <option value="food-and-beverage">Food & Beverage</option>
-            <option value="finance">Finance</option>
-            <option value="real-estate">Real Estate</option>
-            <option value="education">Education</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="sports-and-fitness">Sports & Fitness</option>
-            <option value="art-and-design">Art & Design</option>
-            <option value="travel-and-hospitality">Travel & Hospitality</option>
-            <option value="automotive">Automotive</option>
-            <option value="industrial-and-manufacturing">Industrial & Manufacturing</option>
-            <option value="beauty-and-personal-care">Beauty & Personal Care</option>
-            <option value="e-commerce">E-commerce</option>
-            <option value="non-profit">Non-Profit</option>
-        </select>
+      <div className="grid w-full items-center gap-2">
+        <Label htmlFor="industry">Industry</Label>
+        <Select name="industry" required>
+          <SelectTrigger>
+            <SelectValue placeholder="Select an industry" />
+          </SelectTrigger>
+          <SelectContent side="bottom">
+            <SelectItem value="technology">Technology</SelectItem>
+            <SelectItem value="fashion">Fashion</SelectItem>
+            <SelectItem value="health-wellness">Health & Wellness</SelectItem>
+            <SelectItem value="food-and-beverage">Food & Beverage</SelectItem>
+            <SelectItem value="finance">Finance</SelectItem>
+            <SelectItem value="real-estate">Real Estate</SelectItem>
+            <SelectItem value="education">Education</SelectItem>
+            <SelectItem value="entertainment">Entertainment</SelectItem>
+            <SelectItem value="sports-and-fitness">Sports & Fitness</SelectItem>
+            <SelectItem value="art-and-design">Art & Design</SelectItem>
+            <SelectItem value="travel-and-hospitality">Travel & Hospitality</SelectItem>
+            <SelectItem value="automotive">Automotive</SelectItem>
+            <SelectItem value="industrial-and-manufacturing">Industrial & Manufacturing</SelectItem>
+            <SelectItem value="beauty-and-personal-care">Beauty & Personal Care</SelectItem>
+            <SelectItem value="e-commerce">E-commerce</SelectItem>
+            <SelectItem value="non-profit">Non-Profit</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
     </form>
