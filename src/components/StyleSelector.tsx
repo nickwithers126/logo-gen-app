@@ -53,7 +53,7 @@ export default function StyleSelector() {
 
   return (
     <div className="space-y-2">
-      <label className="block text-sm mb-1">Logo Style (Select up to 5)</label>
+      <label className="block text-sm mb-1">Style (Select up to 5)</label>
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline" className="w-full justify-start text-left text-sm text-muted-foreground bg-[#181818]">

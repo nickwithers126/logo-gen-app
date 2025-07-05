@@ -4,10 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import StyleSelector from "@/components/StyleSelector";
+import ColorSchemeSelector from "./ColorSchemeSelector";
 
 export default function LogoForm() {
   return (
-    <form className="space-y-6 max-w-xl min-w-md mx-auto p-6 bg-[#181818] rounded-xl shadow-lg text-white">
+    <form className="space-y-6 max-w-xl min-w-sm md:w-md mx-auto p-6 bg-[#181818] rounded-xl shadow-lg text-white">
 
       <h1 className="text-3xl font-bold">AI Logo Generator</h1>
 
@@ -59,6 +60,8 @@ export default function LogoForm() {
       </div>
 
       <StyleSelector />
+
+      <ColorSchemeSelector />
 
     </form>
   );
