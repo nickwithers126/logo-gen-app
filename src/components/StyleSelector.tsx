@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -39,8 +38,12 @@ const styleOptions = [
   'Symbolic',
 ];
 
-export default function StyleSelector() {
-  const [selectedStyles, setSelectedStyles] = useState<string[]>([]);
+interface StyleSelectorProps {
+  selectedStyles: string[];
+  setSelectedStyles: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+export default function StyleSelector({ selectedStyles, setSelectedStyles }: StyleSelectorProps) {
   const maxStyles = 5;
 
   const toggleStyle = (style: string) => {

@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import {
@@ -11,9 +10,14 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-export default function ColorSchemeSelector() {
-  const [colorScheme, setColorScheme] = useState('');
-  const [colors, setColors] = useState<string[]>([]);
+interface ColorSchemeSelectorProps {
+  colorScheme: string;
+  setColorScheme: (value: string) => void;
+  colors: string[];
+  setColors: (colors: string[]) => void;
+}
+
+export default function ColorSchemeSelector({ colorScheme, setColorScheme, colors, setColors }: ColorSchemeSelectorProps) {
 
   const handleColorSchemeChange = (value: string) => {
     setColorScheme(value);
@@ -60,7 +64,7 @@ export default function ColorSchemeSelector() {
                 id={`color-${index}`}
                 value={color}
                 onChange={(e) => updateColor(index, e.target.value)}
-                className="w- h-10 p-1 bg-transparent border border-[#444]"
+                className="w-20 h-10 p-1 bg-transparent border border-[#444]"
               />
             </div>
           ))}
