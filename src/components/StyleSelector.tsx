@@ -7,7 +7,6 @@ import { cn } from '@/lib/utils'; // utility function from shadcn
 
 const styleOptions = [
   'Minimal',
-  'Vintage',
   'Futuristic',
   'Hand-drawn',
   'Bold',
@@ -15,19 +14,12 @@ const styleOptions = [
   'Elegant',
   'Geometric',
   'Abstract',
-  'Retro',
+  'Retro',    
   'Tech',
-  'Luxury',
-  'Grunge',
   'Organic',
   'Brutalist',
   'Cyberpunk',
-  'Y2K',
-  'Gothic',
-  'Pixelated',
-  'Wavy',
-  'Calligraphic',
-  'Stencil'
+  'Pixelated'
 ];
 
 interface StyleSelectorProps {
