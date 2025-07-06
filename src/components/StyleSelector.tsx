@@ -23,19 +23,11 @@ const styleOptions = [
   'Brutalist',
   'Cyberpunk',
   'Y2K',
-  'Flat',
-  '3D',
-  'Art Deco',
   'Gothic',
   'Pixelated',
   'Wavy',
   'Calligraphic',
-  'Stencil',
-  'Constructivist',
-  'Doodle',
-  'Anime-inspired',
-  'Surreal',
-  'Symbolic',
+  'Stencil'
 ];
 
 interface StyleSelectorProps {
