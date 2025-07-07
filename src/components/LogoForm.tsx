@@ -79,7 +79,7 @@ export default function LogoForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-xl min-w-sm md:w-md mx-auto p-6 bg-[#181818] rounded-xl shadow-lg text-white">
+    <form onSubmit={handleSubmit} className="space-y-5 w-xs md:w-md mx-auto p-5 bg-[#181818] rounded-xl shadow-lg text-white">
 
       <div className="grid w-full items-center gap-2">
         <Label htmlFor="brandName">Brand Name</Label>
@@ -90,6 +90,7 @@ export default function LogoForm({
           required
           value={brandName}
           onChange={(e) => setBrandName(e.target.value)}
+          className="h-8"
         />
       </div>
 
@@ -102,7 +103,7 @@ export default function LogoForm({
           value={logoType}
           onValueChange={setLogoType}
         >
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="!h-8 w-full">
             <SelectValue placeholder="Select a logo type" />
           </SelectTrigger>
           <SelectContent>
@@ -122,6 +123,7 @@ export default function LogoForm({
           required
           value={industry}
           onChange={(e) => setIndustry(e.target.value)}
+          className="h-8"
         />
       </div>
 
@@ -147,6 +149,7 @@ export default function LogoForm({
           placeholder="e.g. Just Do It"
           value={tagline}
           onChange={(e) => setTagline(e.target.value)}
+          className="h-8"
         />
       </div>
 
@@ -158,12 +161,14 @@ export default function LogoForm({
           placeholder="e.g. mountain, crown, lightning"
           required
           value={iconConcepts}
-          onChange={(e) => setIconConcepts(e.target.value)} />
+          onChange={(e) => setIconConcepts(e.target.value)} 
+          className="h-8"
+        />
       </div>
 
       <Button 
         type="submit" 
-        className={`w-full text-white
+        className={`w-full h-8 text-white
           ${isLoading ? 'bg-red-500 cursor-not-allowed' : 'bg-blue-500 hover:bg-[#306bd0]'}`}
           disabled={isLoading}
         >

@@ -42,7 +42,7 @@ export default function ColorSchemeSelector({ colorScheme, setColorScheme, color
       <div className="grid gap-2">
         <Label htmlFor="colorScheme">Color Scheme</Label>
         <Select value={colorScheme} onValueChange={handleColorSchemeChange} required>
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="!h-8 w-full">
             <SelectValue placeholder="Select a color scheme" />
           </SelectTrigger>
           <SelectContent>

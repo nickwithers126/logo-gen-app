@@ -28,7 +28,7 @@ interface StyleSelectorProps {
 }
 
 export default function StyleSelector({ selectedStyles, setSelectedStyles }: StyleSelectorProps) {
-  const maxStyles = 5;
+  const maxStyles = 3;
 
   const toggleStyle = (style: string) => {
     if (selectedStyles.includes(style)) {
@@ -40,13 +40,19 @@ export default function StyleSelector({ selectedStyles, setSelectedStyles }: Sty
 
   return (
     <div className="space-y-2">
-      <label className="block text-sm mb-1">Style (Select up to 5)</label>
+      <label className="block text-sm mb-1">Style (Select up to 3)</label>
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="w-full justify-start text-left text-sm text-muted-foreground bg-[#181818]">
-            {selectedStyles.length > 0
-              ? selectedStyles.join(', ')
-              : 'Select logo styles'}
+          <Button variant="outline" className="w-full h-8 justify-start px-3 text-sm bg-[#181818] hover:bg-[#181818]">
+            {selectedStyles.length > 0 ? (
+              <span className="text-white">
+                {selectedStyles.join(', ')}
+              </span>
+            ) : (
+              <span className="text-muted-foreground">
+                Select logo styles
+              </span>
+            )}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-72 bg-[#181818] border border-[#444] text-white">
