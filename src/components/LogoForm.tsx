@@ -10,10 +10,14 @@ import { useState } from "react";
 
 export default function LogoForm({
   setImageUrl,
-  setIsLoading
+  setIsLoading,
+  isLoading,
+  imageUrl
 }: {
   setImageUrl: (url: string) => void;
   setIsLoading: (value: boolean) => void;
+  isLoading: boolean;
+  imageUrl: string;
 }) {
 
   const [brandName, setBrandName] = useState('');
@@ -157,8 +161,13 @@ export default function LogoForm({
           onChange={(e) => setIconConcepts(e.target.value)} />
       </div>
 
-      <Button type="submit" className="w-full bg-blue-500 text-white hover:bg-blue-700" >
-        Generate Logo
+      <Button 
+        type="submit" 
+        className={`w-full text-white
+          ${isLoading ? 'bg-red-500 cursor-not-allowed' : 'bg-blue-500 hover:bg-[#306bd0]'}`}
+          disabled={isLoading}
+        >
+        {imageUrl ? 'Regenerate Logo' : 'Generate Logo'}
       </Button>
 
     </form>
