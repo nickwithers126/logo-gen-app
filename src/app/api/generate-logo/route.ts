@@ -6,64 +6,60 @@ export async function POST(req: NextRequest) {
         const { brandName, logoType, industry, styles, colorScheme, colors, tagline, iconConcepts } = await req.json();
 
         const prompt = `
-        Design a single, clean, and simple ${logoType === 'text'
-                ? '**typographic wordmark (text-only)**'
+        Design a clean, modern ${logoType === 'text'
+                ? 'typographic wordmark (text-only)'
                 : logoType === 'icon-and-text'
-                    ? '**logo symbol with integrated text**'
-                    : '**logo symbol only**'
-            } for a brand named "${brandName}" in the ${industry} industry.
+                    ? 'logo symbol with integrated text'
+                    : 'standalone logo symbol'} for a brand named "${brandName}" in the ${industry} industry.
 
-        The logo should reflect the following style attributes: ${styles.join(', ')}.
-        The brand's tagline is "${tagline}", which reflects the tone and mission of the company.  
-        **Do not include the tagline or slogan in the logo.**
+        The style should reflect: ${styles.join(', ')}.
 
-        Create a **flat, 2D, vector-style design** with no gradients, lighting, shadows, bevels, or 3D effects.
-        It must be rendered from a **flat, top-down perspective** — not tilted or angled.
+        The brand's tagline is: "${tagline}".  
+        Use this to influence the visual tone — interpret its meaning creatively through symbolism, composition, or mood.  
+        **Do not include the actual text of the tagline in the logo.**
+
+        Create a flat, 2D, top-down vector design — no gradients, shadows, lighting, bevels, or 3D effects.
 
         ${logoType === 'icon'
-                ? `
-        Do not include any text, lettering, taglines, or logotypes.
-        Only design a single centered symbol — no frames, mockups, or multiple layout versions.`
+                ? `Exclude all text and logotypes. Focus solely on a strong, centered symbol.`
                 : logoType === 'text'
-                    ? `
-        Do not include any symbols or icons — only create a custom typographic design of the brand name.`
-                    : `
-        Include both a **clean, bold symbol** and **custom stylized text** of the brand name.
-        The symbol and text should be visually balanced and integrated as one unified mark.`
-            }
+                    ? `Do not include any iconography or symbols — only a custom stylized wordmark.`
+                    : `Include both a bold, minimal symbol and a custom stylized brand name — they should form one cohesive unit.`}
+
+        Incorporate elements or ideas related to: ${iconConcepts}.  
+        These are themes or visual cues the user would like to see represented in the design.  
+        They can be blended, abstracted, or interpreted symbolically — at least one should be clearly reflected in the final design.
+
+        In most cases, do **not** include any letters or initials in the design.  
+        Only do so if it fits extremely naturally and enhances the concept without making the logo feel forced.  
+        If used, only include the first letter of the brand (e.g., "${brandName[0]}") or initials (e.g., "TD" for "Top Defense") — but never letters that do not begin a word.
 
         The ${logoType === 'text'
-                ? `typographic logotype`
+                ? 'wordmark'
                 : logoType === 'icon-and-text'
-                    ? `combined symbol and wordmark`
-                    : `symbol`
-            } should be modern, scalable, and minimal — inspired by logos like Apple, OpenAI, Notion, and Twitter.
-        It must be bold and memorable enough to work at small sizes (like a favicon or app icon).
-
-        ${iconConcepts ? `Incorporate subtle, abstract symbolism related to: ${iconConcepts}.` : ''}
+                    ? 'combined logo'
+                    : 'symbol'} should be minimal, scalable, and iconic.  
+        It must be bold and recognizable at small sizes (like a favicon or app icon).
 
         ${colorScheme === 'black-white'
-                ? `Use **only pure black and white** — absolutely no other colors are allowed.  
-        Both the logo symbol and the background must be composed using **flat black and white fills only**.  
-        Do not use any other colors, tones, grays, golds, off-whites, sepia, or textured effects.  
-        Avoid outlines, gradients, patterns, lighting, or visual noise.  
-        Everything must be stark, clean, high-contrast, and purely black and white.  
+                ? `Use only pure black and white — no other colors or shades.  
+        The logo and background must use solid black and white flat fills.  
+        Avoid grays, sepia, outlines, gradients, or textured effects.  
+        Choose either black or white as the background — whichever provides the highest contrast against the logo.`
+                : colors?.length > 0
+                    ? `Use only the following HEX color codes: ${colors.join(', ')}.  
+        These exact values must be clearly and predominantly visible.  
+        Do not use black, white, gray, or approximate substitutes. Use flat fills only — no gradients, shadows, or blending effects.`
+                    : ''}
 
-        ⚠️ Final rule: this image must use **strictly black and white only** — no exceptions.`
-                : `Use **only** the following HEX color codes in the logo: ${colors.join(', ')}.  
-        These exact colors must be clearly and predominantly visible.  
-        Do not use black, white, gray, or substitute with similar or approximate shades.  
-        Apply the colors as **flat fills only** — no gradients, shadows, textures, or blending effects.`
-            }
+        Ensure the design has clean, consistent spacing throughout.  
+        Avoid clutter, awkward gaps, or misaligned elements.  
+        Every part of the composition should feel intentional and balanced.
 
-
-        The background must be a **flat, solid color** — no textures, shadows, gradients, or photographic elements.  
-        For black and white logos, the background should be either pure black or pure white — **whichever provides the highest contrast** against the logo symbol.  
-        If the logo is black, the background must be solid white. If the logo is white, the background must be solid black.  
-        The entire composition should appear clean and digitally composed — like a vector file on a solid background.
-
+        The final image must have a **flat, solid background color** as part of the composition — it should not be transparent.  
+        Choose a background that provides strong contrast with the logo for maximum visibility.  
+        Do not use mockups, lighting, photographic elements, or textured effects.
         `.trim();
-
 
 
         console.log("Final prompt sent to OpenAI:", prompt);

@@ -8,7 +8,13 @@ import StyleSelector from "@/components/StyleSelector";
 import ColorSchemeSelector from "./ColorSchemeSelector";
 import { useState } from "react";
 
-export default function LogoForm() {
+export default function LogoForm({
+  setImageUrl,
+  setIsLoading
+}: {
+  setImageUrl: (url: string) => void;
+  setIsLoading: (value: boolean) => void;
+}) {
 
   const [brandName, setBrandName] = useState('');
   const [logoType, setLogoType] = useState('');
@@ -18,8 +24,6 @@ export default function LogoForm() {
   const [selectedStyles, setSelectedStyles] = useState<string[]>([]);
   const [colorScheme, setColorScheme] = useState('');
   const [colors, setColors] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,7 +46,7 @@ export default function LogoForm() {
       logoType: formData.get('logoType'),
       industry: formData.get('industry'),
       styles: selectedStyles,
-      colorScheme: formData.get('colorScheme'),
+      colorScheme: colorScheme,
       colors: colors,
       tagline: formData.get('tagline'),
       iconConcepts: formData.get('iconConcepts')
@@ -72,8 +76,6 @@ export default function LogoForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-xl min-w-sm md:w-md mx-auto p-6 bg-[#181818] rounded-xl shadow-lg text-white">
-
-      <h1 className="text-3xl font-bold">AI Logo Generator</h1>
 
       <div className="grid w-full items-center gap-2">
         <Label htmlFor="brandName">Brand Name</Label>
@@ -109,34 +111,14 @@ export default function LogoForm() {
 
       <div className="grid w-full items-center gap-2">
         <Label htmlFor="industry">Industry</Label>
-        <Select
+        <Input
+          id="industry"
           name="industry"
+          placeholder="Enter your brand’s industry"
           required
           value={industry}
-          onValueChange={setIndustry}
-        >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select an industry" />
-          </SelectTrigger>
-          <SelectContent side="bottom" className="max-h-64">
-            <SelectItem value="technology">Technology</SelectItem>
-            <SelectItem value="fashion">Fashion</SelectItem>
-            <SelectItem value="health-wellness">Health & Wellness</SelectItem>
-            <SelectItem value="food-and-beverage">Food & Beverage</SelectItem>
-            <SelectItem value="finance">Finance</SelectItem>
-            <SelectItem value="real-estate">Real Estate</SelectItem>
-            <SelectItem value="education">Education</SelectItem>
-            <SelectItem value="entertainment">Entertainment</SelectItem>
-            <SelectItem value="sports-and-fitness">Sports & Fitness</SelectItem>
-            <SelectItem value="art-and-design">Art & Design</SelectItem>
-            <SelectItem value="travel-and-hospitality">Travel & Hospitality</SelectItem>
-            <SelectItem value="automotive">Automotive</SelectItem>
-            <SelectItem value="industrial-and-manufacturing">Industrial & Manufacturing</SelectItem>
-            <SelectItem value="beauty-and-personal-care">Beauty & Personal Care</SelectItem>
-            <SelectItem value="e-commerce">E-commerce</SelectItem>
-            <SelectItem value="non-profit">Non-Profit</SelectItem>
-          </SelectContent>
-        </Select>
+          onChange={(e) => setIndustry(e.target.value)}
+        />
       </div>
 
       <StyleSelector
@@ -175,15 +157,9 @@ export default function LogoForm() {
           onChange={(e) => setIconConcepts(e.target.value)} />
       </div>
 
-      <Button type="submit" className="w-full bg-[#3ba55d] text-white hover:bg-[#2e8b51]" >
-        {isLoading ? 'Generating...' : 'Generate Logo'}
+      <Button type="submit" className="w-full bg-blue-500 text-white hover:bg-blue-700" >
+        Generate Logo
       </Button>
-
-      {imageUrl && (
-        <div className="mt-6">
-          <img src={imageUrl} alt="Generated logo" className="rounded shadow-md" />
-        </div>
-      )}
 
     </form>
   );
