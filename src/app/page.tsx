@@ -10,9 +10,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <main className="min-h-screen w-full bg-[#1e1e1e] flex flex-col items-center gap-5 md:gap-10 xl:gap-20">
+    <main className="min-h-screen w-full bg-[#1e1e1e] flex flex-col items-center gap-5 md:gap-10 2xl:gap-20">
 
-      <div className="flex items-center justify-center mt-10 xl:mt-20 gap-5">
+      <div className="flex items-center justify-center mt-10 2xl:mt-20 gap-5">
         <Image 
           src="/bot_yellow.png"
           alt="bot logo"
