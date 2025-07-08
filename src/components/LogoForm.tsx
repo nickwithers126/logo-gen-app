@@ -33,17 +33,6 @@ export default function LogoForm({
     e.preventDefault();
     setIsLoading(true);
 
-    console.log({
-      brandName,
-      logoType,
-      industry,
-      selectedStyles,
-      colorScheme,
-      colors,
-      tagline,
-      iconConcepts
-    });
-
     const formData = new FormData(e.currentTarget);
     const payload = {
       brandName: formData.get('brandName'),

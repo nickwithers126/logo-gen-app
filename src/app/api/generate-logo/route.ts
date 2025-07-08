@@ -61,9 +61,6 @@ export async function POST(req: NextRequest) {
         Do not use mockups, lighting, photographic elements, or textured effects.
         `.trim();
 
-
-        console.log("Final prompt sent to OpenAI:", prompt);
-
         const openai = new OpenAI({
             apiKey: process.env.OPENAI_API_KEY,
         });
@@ -87,7 +84,6 @@ export async function POST(req: NextRequest) {
                 },
             ],
         });
-
 
     } catch (error) {
         console.error('[API_ERROR]', error);
