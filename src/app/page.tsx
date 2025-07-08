@@ -10,9 +10,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <main className="min-h-screen w-full bg-[#1e1e1e] flex flex-col items-center gap-10">
+    <main className="min-h-screen w-full bg-[#1e1e1e] flex flex-col items-center gap-5 md:gap-10 xl:gap-20">
 
-      <div className="flex items-center justify-center mt-10 gap-5">
+      <div className="flex items-center justify-center mt-10 xl:mt-20 gap-5">
         <Image 
           src="/bot_yellow.png"
           alt="bot logo"
@@ -23,7 +23,7 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-white">LogoBuddy</h1>
       </div>
 
-      <div className="flex w-sm md:w-4xl flex-col md:flex-row items-center justify-center gap-8 bg-[#222222] rounded-xl p-8 mb-5">
+      <div className="flex w-sm md:w-xl lg:w-4xl xl:w-5xl flex-col lg:flex-row items-center justify-center gap-8 xl:gap-32 bg-[#222222] rounded-xl p-8 mb-5">
         {/* left side (form) */}
         <div>
           <LogoForm setImageUrl={setImageUrl} setIsLoading={setIsLoading} isLoading={isLoading} imageUrl={imageUrl}/>
@@ -34,7 +34,7 @@ export default function Home() {
           {isLoading ? (
             <div className="flex flex-col items-center gap-4">
               <div className="w-8 h-8 border-4 border-t-transparent border-white rounded-full animate-spin" />
-              <p className="text-white">Generating Logo...</p>
+              <p className="text-white text-sm font-semibold">Generating Logo...</p>
             </div>
           ) : imageUrl ? (
             <>
