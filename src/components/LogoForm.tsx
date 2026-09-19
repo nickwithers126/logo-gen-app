@@ -158,7 +158,7 @@ export default function LogoForm({
       <Button 
         type="submit" 
         className={`w-full h-8 text-white
-          ${isLoading ? 'bg-red-500 cursor-not-allowed' : 'bg-blue-500 hover:bg-[#306bd0]'}`}
+          ${isLoading ? 'bg-red-500 cursor-not-allowed' : 'bg-blue-500 hover:bg-[#306bd0] cursor-pointer'}`}
           disabled={isLoading}
         >
         {imageUrl ? 'Regenerate Logo' : 'Generate Logo'}
